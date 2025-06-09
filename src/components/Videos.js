@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import '../Videos.css'; // ملف CSS مخصص للتنسيق
+
 
 const Videos = ({ language }) => {
   const [tutorials, setTutorials] = useState([]);
@@ -21,7 +23,7 @@ const Videos = ({ language }) => {
   useEffect(() => {
     const fetchTutorials = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/tutorials');
+        const response = await fetch('https://your-server.onrender.com/api/tutorials'); // استبدلي بالرابط الفعلي
         const data = await response.json();
         console.log(data);
         setTutorials(Array.isArray(data) ? data : []);
@@ -52,7 +54,7 @@ const Videos = ({ language }) => {
   return (
     <section id="tutorials" className="py-5 fade-in">
       <Container>
-        <h2 className="text-center mb-5">{translations[language].title}</h2>
+        <h2 className="text-center mb-5 text-white">{translations[language].title}</h2>
         {tutorials.length === 0 ? (
           <p className="text-center">{translations[language].noVideos}</p>
         ) : (
@@ -72,17 +74,19 @@ const Videos = ({ language }) => {
                           <span className="ms-2">{translations[language].loading}</span>
                         </div>
                       )}
-                      <video
-                        controls
-                        controlsList="nodownload"
-                        className="w-100"
-                        style={{ maxHeight: '400px' }}
-                        onCanPlay={() => handleCanPlay(index)}
-                        onError={(e) => handleError(e, tutorial.videoUrl, index)}
-                      >
-                        <source src={tutorial.videoUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
+                      <div className="video-container">
+                        <video
+                          controls
+                          controlsList="nodownload"
+                          className="w-100"
+                          style={{ maxHeight: '400px' }}
+                          onCanPlay={() => handleCanPlay(index)}
+                          onError={(e) => handleError(e, tutorial.videoUrl, index)}
+                        >
+                          <source src={tutorial.videoUrl} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
                     </div>
                   </Card.Body>
                 </Card>
