@@ -22,11 +22,24 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.card {
+  max-height: 500px; /* ارتفاع أقصى للبطاقة على الشاشات الكبيرة */
+}
+
+@media (max-width: 1200px) {
+  .video-container {
+    padding-bottom: 75%; /* تحسين للشاشات المتوسطة */
+  }
+  .card {
+    max-height: 400px; /* تقليل الارتفاع على الشاشات المتوسطة */
+  }
+}
+
 @media (max-width: 768px) {
   .video-container {
     padding-bottom: 75%; /* تحسين للأجهزة المحمولة */
   }
-  .video-container video {
+  .card {
     max-height: 300px; /* تقليل الارتفاع على الشاشات الصغيرة */
   }
 }
