@@ -1,7 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import tahseelImage from '../assets/tahseel.jpg'; // استيراد صورة Tahseel
 import vipbookingImage from '../assets/vipbooking.jpg'; // استيراد صورة VIP Booking
 import admissionImage from '../assets/admission.png'; // استيراد صورة نظام القبول
@@ -54,7 +52,6 @@ const Projects = ({ language }) => {
           image: resultsImage // صورة مشروع التخرج
         }
       ],
-      githubLink: 'https://github.com/Malaz-Rash/my-portfolio' // رابط GitHub افتراضي، عدّليه لاحقًا
     },
     ar: {
       title: 'مشاريعي',
@@ -100,7 +97,6 @@ const Projects = ({ language }) => {
           image: resultsImage // صورة مشروع التخرج
         }
       ],
-      githubLink: 'https://github.com/Malaz-Rash/my-portfolio' // رابط GitHub افتراضي، عدّليه لاحقًا
     }
   };
 
@@ -131,18 +127,6 @@ const Projects = ({ language }) => {
             </Col>
           ))}
         </Row>
-        <div className="text-center mt-5">
-          <Button
-            variant="primary"
-            className="px-4 py-2 github-button"
-            href={translations[language].githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faGithub} className="me-2" />
-            View Code on GitHub
-          </Button>
-        </div>
       </Container>
     </section>
   );

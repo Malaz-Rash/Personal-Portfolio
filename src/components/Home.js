@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import profileImage from '../assets/profile.jpg';
 
 const Home = ({ language }) => {
@@ -55,9 +55,6 @@ const Home = ({ language }) => {
             <div className="social-links fade-in">
               <a href="https://www.linkedin.com/in/malaz-alrasheed-younis" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
-              </a>
-              <a href="https://github.com/Malaz-Rash" target="_blank" rel="noopener noreferrer">
-                <FaGithub />
               </a>
               <a href="mailto:malazrash560@gmail.com">
                 <FaEnvelope />

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faEnvelope, faPhone, faCertificate } from '@fortawesome/free-solid-svg-icons';
 import badgeImage from '../assets/badge.png'; // استيراد صورة الـ Badge
 import honourImage from '../assets/honour.png'; // استيراد صورة Honour
+import classeraImage from '../assets/classera.jpg'; // استيراد صورة Calssera
 import '../About.css'; // ملف CSS مخصص للتنسيق
 
 const About = ({ language }) => {
@@ -81,6 +82,12 @@ const About = ({ language }) => {
           issuer: 'Sudan University of Science and Technology',
           link: null, // لا يوجد رابط، يمكن إضافته لاحقًا
           badge: honourImage
+        },
+        {
+          name: 'Classera',
+          issuer: 'Classera Middle East',
+          link: null, // لا يوجد رابط، يمكن إضافته لاحقًا
+          badge: classeraImage
         }
       ],
       contactTitle: 'Contact',
@@ -161,6 +168,12 @@ const About = ({ language }) => {
           issuer: 'Sudan University of Science and Technology',
           link: null, // لا يوجد رابط، يمكن إضافته لاحقًا
           badge: honourImage
+        },
+        {
+          name: 'Classera',
+          issuer: 'Classera Middle East',
+          link: null, // لا يوجد رابط، يمكن إضافته لاحقًا
+          badge: classeraImage
         }
       ],
       contactTitle: 'التواصل',
