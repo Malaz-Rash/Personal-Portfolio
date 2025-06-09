@@ -1,38 +1,220 @@
-.App {
-  text-align: center;
+html {
+  height: 100%;
+  overflow-y: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Times New Roman', Times, serif;
+  direction: ltr;
+  margin: 0;
+  padding: 0;
+  background-color: #EDE4E0;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
   min-height: 100vh;
+  overflow-y: auto;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, rgba(247, 202, 201, 0.7), rgba(237, 228, 224, 0.5));
+  box-shadow: none;
+  padding: 1rem 0;
+}
+
+.navbar.scrolled {
+  background: linear-gradient(to bottom, #F7CAC9, #EDE4E0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  color: #1a252f !important;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.navbar-brand::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #F7CAC9;
+  bottom: 0;
+  left: 0;
+}
+
+.navbar-brand:hover::after {
+  width: 100%;
+}
+
+.nav-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  margin-left: 6rem;
+  max-width: 500px;
+}
+
+.rtl .nav-container {
+  margin-left: 0;
+  margin-right: 6rem;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 0 4rem;
+}
+
+.nav-link {
+  color: #1a252f !important;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(247, 202, 201, 0.7);
+  transform: translateY(-2px);
+}
+
+section {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background-color: #EDE4E0;
+  overflow-y: auto;
+}
+
+#home {
+  background-color: #F7CAC9;
+  background-image: url('./assets/nature-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(247, 202, 201, 0.6);
+}
+
+#home > * {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2 {
+  color: #1a252f;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+p {
+  color: #4a5568;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.rtl {
+  direction: rtl;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.language-toggle {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background-color: #F7CAC9;
+  color: #ffffff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.language-toggle:hover {
+  background-color: #F4A7B9;
+}
+
+.social-links {
+  margin-top: 1rem;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
 }
 
-.App-link {
-  color: #61dafb;
+.social-links a {
+  color: #4a5568;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.social-links a:hover {
+  color: #F7CAC9;
+}
+
+.profile-summary {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 3px solid #F7CAC9;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-summary .card {
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.profile-summary .card-body {
+  padding: 0;
+}
+
+.profile-summary .card-text {
+  color: #4a5568;
+}
+
+.passion-card {
+  border: 2px solid #F7CAC9;
+  border-radius: 10px;
+  background-color: rgba(247, 202, 201, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.passion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+  margin-top: -2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
