@@ -23,7 +23,7 @@ const Videos = ({ language }) => {
   useEffect(() => {
     const fetchTutorials = async () => {
       try {
-        const response = await fetch('https://personal-portfolio-6f9b.onrender.com'); // استبدلي بالرابط الفعلي
+        const response = await fetch('https://personal-portfolio-6f9b.onrender.com/api/tutorials'); // استبدلي بالرابط الفعلي
         const data = await response.json();
         console.log(data);
         setTutorials(Array.isArray(data) ? data : []);

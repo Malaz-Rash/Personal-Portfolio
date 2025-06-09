@@ -11,7 +11,6 @@ app.use(express.json());
 
 // الاتصال بـ MongoDB Atlas
 const uri = process.env.MONGODB_URI || 'mongodb+srv://admin:HamzaLoza%4025102023@cluster0.65macnn.mongodb.net/tutorials?retryWrites=true&w=majority&appName=Cluster0';
-// تمت كتابة كلمة المرور مع %40 بدلاً من @ لأنه رمز خاص في الـ URL
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Failed to connect to MongoDB Atlas:', err));
@@ -32,8 +31,8 @@ app.get('/api/tutorials', async (req, res) => {
     const tutorialsWithSignedUrls = tutorials.map(tutorial => {
       const signedUrl = getSignedUrl({
         url: `https://ds94x55ah8o35.cloudfront.net/${tutorial.videoFileName}`,
-        keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID || 'YOUR_CLOUDFRONT_KEY_PAIR_ID',
-        privateKey: process.env.CLOUDFRONT_PRIVATE_KEY || `-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAs5rh6oZvB0Tp4S2qJkFfIJmTSNdj5jDSsG5W+nJsGP5UCy+o\nHNTPuGVF0A4wEWN1A5SkRbesQztwwlnjJ+KIZMDXnl/Ej9yiKV/lP/sBNGbSWnzg\n0Kh5v/2BtPVTYKDk2cSVD7iAg7/qJfot3UnR9su3Nhel3zirOBamsccmTo1Y0GYd\nqYvWZCE2OPwsThHlJWtide2Qyj5u3HOZmqKsEp+cklIU9vD4xlP/behFhH8WqxlZ\nPCF6Zj6QvnHMG8RjsZ14BOK6wFe77AP2xHTvzyzqB0mkJ9VcdZLZA/OXxKcKt1YK\n3BngPHcaegA0DLhcxxlrYtF46K+rvB5tUrn9HwIDAQABAoIBACfDGVLfkkMMua6V\nen7fqBzCgz30GXTDyFExDGaD4HSkEZ0sXs6LOrV7DjqieXfQCf7R8JBSuntj9HHC\njqys1T9hBhtU3mJvGSOJzGoeusSMIvPPg8IOGm4rxIR4b44L8L5ZbBq/4QvJ+B+S\nRIciKa62qQf7skg59oYDVcIz8cIf3obr5DhmRZWDFg9VnBLCTGf55epf+GcudxKx\nlljP/E/RhvycIyz6F6wJHuXYFK4Gmz3uWN4NefLpUS8KsDItF4wh1X0CjohNVasw\nCV6xZQkRGn+J3tN8vs+oxFYG92bv3Tf+GwTUmZ3XfihwhDJglJT53/Ha1E9tsUJ6\nR5NZDkkCgYEA/cz77uMQbbV5o851r3o2jCpA/XXBSPKoTW7YK1sL8adb1yrp+QxH\n73P4+N/JZbqqQ/w3i005j2BzGM/JRYtlfUE+BbfUNgN0sUJTRkyAeJfwhYtwt4QG\nd4Jr2Gjp0JA9aeMmgwbgIkSvn9YYp8zRkWWxf9zabs58XhAeTVNYa4MCgYEAtSlO\nozjX3WuTutBfpT505v6eViy6BUSPOimcwNV8+6u4zwSCNWkYE+NpkMxaJkZyijn6\ni5D2R8oC8LNbu9oVSxhkW7gaeMKJDoAFDd08pyokNcAkQj5KeBz1fiXbiu8MaTwE\nJKxr03xtMY8gFhsU/Nzav//xiBPZMyrRUF3xaTUCgYBVHNsX/7nQsN08G87HrDqC\nwuDMnyLUrdvXK+b+kyfsQG3COLgCNyYgnUnPXG0T2oejCQAvjRRSisvOdFBRLDA6\n0xhTnpRiEMKfd1ip6Jnk1z9n6Z1BTdtFVM2J45UVxmlyCyUtJ68ejt4+wfO+wic9\nlVbzRENUiZaXjNw8nki2tQKBgDvuk25aEsfUnAXUg5/WHrSAjX8ywsOVX9C9DXeZ\n6QQVVkleU3k58FY8CKN3h2dcLO5fqexcI62yPfDFVVa7GgpC4oiZSmCi8taSMZnZ\nlAQ1Y89IZnZnxxkfc3OtMIkw9ikmSrSbOfy4ECOyFspZYUMaCWA1WwFKl7Neuepd\necz1AoGAU6gBZG4Iy2gE6pVsh3z/DaT6MyJnYK62halTwPU4x++WPI7xeoUxOlhD\nthbUb6EWVAKfqdKlKq5Yn6tTn4egNYdr6904M/o4bWJleRP5orHWr4K8UlU371Kn\nK/rElujsxzcoOSAnvaE0QqO0X5nv6ZopaYPgXnDTrvLmPdIot8E=\n-----END RSA PRIVATE KEY-----`,
+        keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
+        privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
         dateLessThan: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // ساعتين
       });
       return {
