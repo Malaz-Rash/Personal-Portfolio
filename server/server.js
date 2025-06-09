@@ -29,6 +29,9 @@ app.get('/api/tutorials', async (req, res) => {
     const tutorials = await Tutorial.find();
     console.log('Tutorials fetched:', tutorials); // سجل للتحقق من البيانات
     const tutorialsWithSignedUrls = tutorials.map(tutorial => {
+      if (!process.env.CLOUDFRONT_KEY_PAIR_ID || !process.env.CLOUDFRONT_PRIVATE_KEY) {
+        return { ...tutorial._doc, videoUrl: `https://ds94x55ah8o35.cloudfront.net/${tutorial.videoFileName}` }; // رابط غير موقع كبديل
+      }
       const signedUrl = getSignedUrl({
         url: `https://ds94x55ah8o35.cloudfront.net/${tutorial.videoFileName}`,
         keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
